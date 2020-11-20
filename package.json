@@ -1,0 +1,46 @@
+{
+  "name": "mean-project",
+  "version": "1.0.0",
+  "description": "A mean project for wakaf",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Diana Fitri",
+  "license": "ISC",
+  "dependencies": {
+    "angular-material": "^1.2.1",
+    "bcrypt": "^5.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "chai": "^4.1.2",
+    "dotenv": "^7.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^5.2.0",
+    "mocha-cli": "^1.0.1",
+    "mochawesome": "^3.0.2",
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.2.0",
+    "nodemon": "^2.0.6",
+    "path": "^0.12.7",
+    "supertest": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cypress": "^5.6.0",
+    "cypress-multi-reporters": "^1.4.0",
+    "karma": "^5.2.3",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.3",
+    "karma-jasmine": "^4.0.1",
+    "karma-jasmine-html-reporter": "^1.5.4",
+    "mocha": "^8.2.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0",
+    "supertest": "^6.0.1"
+  }
+}

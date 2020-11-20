@@ -1,0 +1,207 @@
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#createnewData"><i class="fas fa-plus mr-2"></i>Tambah Transaksi</button>
+<br>
+<div class="text-center" ng-show="wakif.loading">
+    <i class="fa fa-repeat fa-spinner" style="font-size: 30px;"></i><br>
+    <p>Loading...</p>
+</div>
+<br>
+<div class="alert alert-success alert-dismissible show-hide-message ng-hide-remove" ng-show="wakif.successMsg">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{ wakif.successMsg }}
+</div>
+<div class="alert alert-danger alert-dismissible show-hide-message ng-hide-remove" ng-show="wakif.errorMsg">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{ wakif.errorMsg }}
+</div>
+
+
+<section ng-show="wakif.penerimaarray == undefined " class="px-md-5 mx-md-5 text-center dark-grey-text mb-4">
+
+    <img src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?size=338&ext=jpg" width="400px" alt="No data found" class="img-fluid mb-4">
+
+    <h3 class="font-weight-bold">Ternyata tidak ada transaksi sama sekali!</h3>
+
+</section>
+
+
+<table id="dtBasicExample" ng-show="wakif.penerimaarray != undefined" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th class="th-sm">Tanggal</th>
+        <th class="th-sm">Nominal</th>
+        <th class="th-sm">Penerima</th>
+        <th class="th-sm" >Status</th>
+        <th class="th-sm">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="trans in wakif.dapat_transaksi">
+        <td>{{ wakif.tanggals[$index] }}</td>
+        <td>
+            {{ trans.nominal }}
+        </td>
+        <td>
+            {{ wakif.penerimaarray[$index]}}
+        </td>
+        <td ng-style="{ 'color': (trans.status ? 'green' : 'red') }">
+            <h6 ng-show="trans.status==true">Sudah dikonfirmasi</h6>
+            <h6 ng-show="trans.status==false">Belum dikonfirmasi</h6>
+        </td>
+        <td  class="text-center">
+            <a href="" data-toggle="modal" ng-click="wakif.viewData(trans._id)" data-target="#viewData" class="mr-2"><i class="fa fa-eye"></i></a>
+            <a href="" ng-click="wakif.editTransaksi(trans._id);" data-toggle="modal" data-target="#exampleModal" class="mr-2"><i class="fas fa-edit"></i></a>
+            <a href="" ng-click="wakif.doDeletion(trans._id);"><i class="fas fa-trash"></i></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: lightskyblue">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Wakaf</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="wakif.updateTransaksi(wakif.edit_transactions._id);">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nominal</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-model="updateData.nominal">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-7 col-form-label">Nama Program Wakaf</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select mr-sm-2" ng-model="updateData.program_id">
+                                <option ng-repeat="penerima in wakif.daftar_penerima" ng-selected="penerima.name == wakif.edit_transactions.program_id.name" value="{{ penerima._id }}">{{ penerima.name}} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirim!</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="text-center" ng-show="wakif.loading">
+                    <i class="fa fa-repeat fa-spinner" style="font-size: 30px;"></i><br>
+                    <p>Loading...</p>
+                </div>
+                <br>
+                <div class="show-hide-message ng-hide-remove" ng-show="wakif.successMsg == true">
+                    <div class="alert alert-success">{{ wakif.successMsg }}</div>
+                </div>
+                <div class="show-hide-message ng-hide-remove" ng-show="wakif.errorMsg == true">
+                    <div class="alert alert-danger">{{ wakif.errorMsg }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: lightskyblue">
+                <h5 class="modal-title">Detail Transaksi</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <i class="fas fa-calendar"></i>
+                        </td>
+                        <td>
+                            {{ wakif.view_tanggal }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fas fa-credit-card"></i>
+                        </td>
+                        <td>
+                            Rp. {{ wakif.view_transaksi.nominal }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fas fa-user"></i>
+                        </td>
+                        <td>
+                            {{ wakif.view_penerima }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fas fa-bell"></i>
+                        </td>
+                        <td ng-style="{ 'color': (wakif.view_transaksi.status ? 'green' : 'red') }">
+                            <h6 ng-show="wakif.view_transaksi.status==true">Sudah dikonfirmasi</h6>
+                            <h6 ng-show="wakif.view_transaksi.status==false">Belum dikonfirmasi</h6>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createnewData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: lightskyblue">
+                <h5 class="modal-title" id="createData">Saya Berwakaf</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible" ng-show="wakif.errorMsg == true" >
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ wakif.errorMsg }}
+                </div>
+                <div class="alert alert-success alert-dismissible" ng-show="wakif.successMsg == true" >
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ wakif.successMsg }}
+                </div>
+                <form ng-submit="wakif.transData(tranData);">
+                    <div class="form-group row">
+                        <label for="inputNominal" class="col-sm-2 col-form-label">Nominal</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputNominal" placeholder="Masukkan Nominal ..." ng-model="wakif.tranData.nominal">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inlineFormCustomSelect" class="col-sm-7 col-form-label">Nama Program Wakaf</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ng-model="wakif.tranData.program_id">
+                                <option ng-repeat="penerima in wakif.daftar_penerima" value="{{ penerima._id }}">{{ penerima.name}} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" id="btnSave" class="btn btn-primary">Kirim!</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $('#dtBasicExample').DataTable({-->
+<!--            "searching": false,-->
+<!--            lengthMenu: [3, 4, 5, 10, 20, 50],-->
+<!--        });-->
+<!--        $('.dataTables_length').addClass('bs-select');-->
+<!--    });-->
+<!--</script>-->

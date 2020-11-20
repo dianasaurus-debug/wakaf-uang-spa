@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6">
+<!-- Default form register -->
+<form class="text-center border border-light p-5" ng-submit="register.regUser(regData);">
+
+    <p class="h4 mb-4">Sign up</p>
+
+    <input type="text" id="name" class="form-control mb-4" placeholder="Name" ng-model="register.regData.name">
+
+    <input type="text" id="defaultRegisterPhonePassword" class="form-control" ng-model="register.regData.username" placeholder="Username" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+    <!-- E-mail -->
+    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" ng-model="register.regData.email" placeholder="E-mail">
+
+    <!-- Password -->
+    <input type="password" id="defaultRegisterFormPassword" class="form-control" ng-model="register.regData.password" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+
+    <!-- Sign up button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
+
+</form>
+
+<div class="text-center" ng-show="register.loading">
+    <i class="fa fa-repeat fa-spinner" style="font-size: 30px;"></i><br>
+    <p>Loading...</p>
+</div>
+<br>
+<div class="show-hide-message ng-hide-remove" ng-show="register.successMsg">
+    <div class="alert alert-success">{{ register.successMsg }}</div>
+</div>
+<div class="show-hide-message ng-hide-remove" ng-show="register.errorMsg">
+    <div class="alert alert-danger">{{ register.errorMsg }}</div>
+</div>
+    </div>
+    <div class="col-md-6">
+        <img src="https://res.cloudinary.com/kwaba/image/upload/v1580224070/Signup_knpnhg.png">
+    </div>
+</div>

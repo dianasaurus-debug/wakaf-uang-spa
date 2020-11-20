@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Fixed top navbar example · Bootstrap</title>
+
+    <script src="assets/js/jquery.min.js"></script>
+<!--    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>-->
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-route.js"></script>
+    <script src="assets/js/angular-animate.js"></script>
+    <script src="assets/js/angular-aria.min.js"></script>
+    <script src="assets/js/ui-bootstrap.js"></script>
+
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/controllers/allprogramsController.js"></script>
+    <script src="app/controllers/userController.js"></script>
+    <script src="app/controllers/resultController.js"></script>
+    <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/wakifCtrl.js"></script>
+    <script src="app/controllers/programController.js"></script>
+    <script src="app/services/userservices.js"></script>
+    <script src="app/services/programServices.js"></script>
+    <script src="app/services/AuthServices.js"></script>
+    <script src="app/services/wakifServices.js"></script>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/animate.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/cover.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <!--    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <style>
+        /* Show it is fixed to the top */
+        body {
+            min-height: 40rem;
+        }
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .hm-gradient {
+            background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+        }
+        .darken-grey-text {
+            color: #2E2E2E;
+        }
+
+        .navbar .dropdown-menu a:hover {
+            color: #616161 !important;
+        }
+        .active {
+            color: black !important;
+        }
+        .darken-grey-text {
+            color: #2E2E2E;
+        }
+        a {
+            color : black;
+        }
+
+    </style>
+    <!-- Custom styles for this template -->
+</head>
+<body ng-app="wakafApp" ng-controller="mainCtrl as main">
+<nav class="mb-3 navbar navbar-expand-lg navbar-dark cyan">
+    <a class="navbar-brand font-bold" href="#">WakafKu</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" ng-class="getClass('/')" href="/"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item" ng-show="!main.isLoggedIn">
+                <a class="nav-link" ng-class="getClass('/login')" href="/login"><i class="fas fa-id-card"></i> Login</a>
+            </li>
+            <li class="nav-item" ng-show="!main.isLoggedIn">
+                <a class="nav-link" ng-class="getClass('/register')" href="/register"><i class="fa fa-registered"></i> Register</a>
+            </li>
+            <li class="nav-item" ng-show="main.isLoggedIn">
+                <a class="nav-link" ng-class="getClass('/all-programs')" href="/all-programs"><i class="fa fa-university"></i> Program Wakaf</a>
+            </li>
+            <li class="nav-item" ng-show="main.isLoggedIn">
+                <a class="nav-link" ng-class="getClass('/my_program')" href="/my_program"><i class="fa fa-street-view"></i> Program Wakafku</a>
+            </li>
+            <li class="nav-item" ng-show="main.isLoggedIn">
+                <a class="nav-link" ng-class="getClass('/halaman_wakif')" href="/halaman_wakif"><i class="fa fa-credit-card"></i> Wakafku</a>
+            </li>
+            <li class="nav-item dropdown" ng-show="main.isLoggedIn">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Hello, {{ main.username}} </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                    <a class="dropdown-item" ng-class="getClass('/profile')" href="/profile">My account</a>
+                    <a class="dropdown-item" ng-click="main.logout();">Log out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main role="main" class="container">
+    <div ng-view></div>
+</main>
+<script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+</html>

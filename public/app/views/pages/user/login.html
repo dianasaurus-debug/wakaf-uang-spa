@@ -1,0 +1,39 @@
+<div class="row">
+<div class="col-md-6">
+<form class="text-center border border-light p-5" ng-submit="main.doLogin(loginData);">
+
+    <p class="h4 mb-4">Sign in</p>
+
+    <!-- Email -->
+    <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username" ng-model="main.loginData.username">
+
+    <!-- Password -->
+    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" ng-model="main.loginData.password">
+
+
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+    <!-- Register -->
+    <p>Belum punya akun?
+        <a href="/register">Register</a>
+    </p>
+
+</form>
+
+<div class="text-center" ng-show="main.loading">
+    <i class="fa fa-repeat fa-spinner" style="font-size: 30px;"></i><br>
+    <p>Loading...</p>
+</div>
+<br>
+<div class="show-hide-message ng-hide-remove" ng-show="main.successMsg">
+    <div class="alert alert-success">{{ main.successMsg }}</div>
+</div>
+<div class="show-hide-message ng-hide-remove" ng-show="main.errorMsg">
+    <div class="alert alert-danger">{{ main.errorMsg }}</div>
+</div>
+</div>
+    <div class="col-md-6">
+        <img src="https://image.freepik.com/free-vector/man-stands-front-inputted-secured-data-registration-form-login-user-interface-isometric-flat-illustration-infographic-elements-which-are-displayed-big-mobile-phone_198695-6.jpg" height="400px">
+    </div>
+</div>

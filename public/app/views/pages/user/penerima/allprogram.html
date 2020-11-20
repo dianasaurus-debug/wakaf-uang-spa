@@ -1,0 +1,213 @@
+
+<h3>Program Wakaf Berdasarkan Kategori</h3>
+<hr class="hr-dark">
+<div class="row">
+    <h5 class="col-md-12 font-bold"></i>Wakaf Pangan<i class="fas fa-angle-double-right ml-5"></i></h5>
+    <h5 class="col-md-4 mx-auto my-6" ng-show="program.pangan.length <= 0 ">Belum ada data</h5>
+    <div  ng-show="program.pangan.length > 0 " class="col-md-4 mx-auto my-6" ng-repeat="pr in program.pangan">
+        <!--Card-->
+        <div class="card card-cascade narrower mb-4">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://islamic-center.or.id/wp-content/uploads/2016/10/anak-yatim-ngaji-quran.jpg" alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade p-3">
+                <h5 class="pink-text">
+                    <i class="fas fa-utensils" ng-show="pr.kategori == 'pangan'"></i>
+                    <i class="fas fa-building" ng-show="pr.kategori == 'bangunan'"></i>
+                    <i class="fas fa-book" ng-show="pr.kategori == 'pendidikan'"></i>
+                    <i class="fas fa-heartbeat" ng-show="pr.kategori == 'kesehatan'"></i>
+
+                    {{pr.kategori}}</h5>
+                <!--Title-->
+                <h4 class="card-title" style="font-size: 20px;font-weight: bold">{{pr.name}}</h4>
+                <!--Text-->
+                <p class="card-text" style="font-size: 12px;">{{pr.desc}}</p>
+                <!-- Linkedin -->
+                <div class="progress" style="height:20px">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;height:20px;">Rp. 20.000
+                    </div>
+                </div>
+                <h6 class="float-right">Dari <b>Rp. {{ pr.target }}</b></h6>
+                <a href="" ng-click="program.getIdofProgram(pr._id)" class="btn btn-primary">Berwakaf</a>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer text-muted text-center" style="font-size: 10px">
+                {{program.tanggals[$index]}}
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+    </div>
+</div>
+<div class="row">
+    <h5 class="col-md-12 font-bold"></i>Wakaf Bangunan<i class="fas fa-angle-double-right ml-5"></i></h5>
+    <h5 class="col-md-4 mx-auto my-6" ng-show="program.bangunan.length <= 0 ">Belum ada data</h5>
+    <div ng-show="program.bangunan.length > 0 " class="col-md-4 mx-auto my-6" ng-repeat="pr in program.bangunan" >
+        <!--Card-->
+        <div class="card card-cascade narrower mb-4">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://assets.kompasiana.com/items/album/2020/04/30/masjid-5-01-5ea9f41dd541df066d140242.jpeg?t=o&v=700" alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade p-3">
+                <h5 class="pink-text">
+                    <i class="fas fa-utensils" ng-show="pr.kategori == 'pangan'"></i>
+                    <i class="fas fa-building" ng-show="pr.kategori == 'bangunan'"></i>
+                    <i class="fas fa-book" ng-show="pr.kategori == 'pendidikan'"></i>
+                    <i class="fas fa-heartbeat" ng-show="pr.kategori == 'kesehatan'"></i>
+
+                    {{pr.kategori}}</h5>
+                <!--Title-->
+                <h4 class="card-title" style="font-size: 20px;font-weight: bold">{{pr.name}}</h4>
+                <!--Text-->
+                <p class="card-text" style="font-size: 12px;">{{pr.desc}}</p>
+                <!-- Linkedin -->
+                <div class="progress" style="height:20px">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;height:20px;">Rp. 20.000
+                    </div>
+                </div>
+                <h6 class="float-right">Dari <b>Rp. {{ pr.target }}</b></h6>
+                <a href="" ng-click="program.getIdofProgram(pr._id)" class="btn btn-primary">Berwakaf</a>
+
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer text-muted text-center" style="font-size: 10px">
+                {{program.tanggals[$index]}}
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+    </div>
+</div>
+<div class="row" >
+    <h5 class="col-md-12 font-bold"></i>Wakaf Pendidikan<i class="fas fa-angle-double-right ml-5"></i></h5>
+    <h5 class="col-md-4 mx-auto my-6" ng-show="program.pendidikan.length <= 0 ">Belum ada data</h5>
+    <div ng-show="program.pendidikan.length > 0 " class="col-md-4 mx-auto my-6" ng-repeat="pr in program.pendidikan" >
+        <!--Card-->
+        <div class="card card-cascade narrower mb-4">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo6.jpg" alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade p-3">
+                <h5 class="pink-text">
+                    <i class="fas fa-utensils" ng-show="pr.kategori == 'pangan'"></i>
+                    <i class="fas fa-building" ng-show="pr.kategori == 'bangunan'"></i>
+                    <i class="fas fa-book" ng-show="pr.kategori == 'pendidikan'"></i>
+                    <i class="fas fa-heartbeat" ng-show="pr.kategori == 'kesehatan'"></i>
+
+                    {{pr.kategori}}</h5>
+                <!--Title-->
+                <h4 class="card-title" style="font-size: 20px;font-weight: bold">{{pr.name}}</h4>
+                <!--Text-->
+                <p class="card-text" style="font-size: 12px;">{{pr.desc}}</p>
+                <!-- Linkedin -->
+                <a href="" ng-click="program.getIdofProgram(pr._id)" class="btn btn-primary">Berwakaf</a>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer text-muted text-center" style="font-size: 10px">
+                {{program.tanggals[$index]}}
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+    </div>
+</div>
+<div class="row" >
+    <h5 class="col-md-12 font-bold"></i>Wakaf Kesehatan<i class="fas fa-angle-double-right ml-5"></i></h5>
+    <h5 class="col-md-4 mx-auto my-6" ng-show="program.kesehatan.length <= 0 ">Belum ada data</h5>
+    <div ng-show="program.kesehatan.length > 0 " class="col-md-4 mx-auto my-6" ng-repeat="pr in program.kesehatan" >
+        <!--Card-->
+        <div class="card card-cascade narrower mb-4">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo6.jpg" alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade p-3">
+                <h5 class="pink-text">
+                    <i class="fas fa-utensils" ng-show="pr.kategori == 'pangan'"></i>
+                    <i class="fas fa-building" ng-show="pr.kategori == 'bangunan'"></i>
+                    <i class="fas fa-book" ng-show="pr.kategori == 'pendidikan'"></i>
+                    <i class="fas fa-heartbeat" ng-show="pr.kategori == 'kesehatan'"></i>
+
+                    {{pr.kategori}}</h5>
+                <!--Title-->
+                <h4 class="card-title" style="font-size: 20px;font-weight: bold">{{pr.name}}</h4>
+                <!--Text-->
+                <p class="card-text" style="font-size: 12px;">{{pr.desc}}</p>
+                <!-- Linkedin -->
+                <a href="" ng-click="program.getIdofProgram(pr._id)" class="btn btn-primary">Berwakaf</a>
+
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer text-muted text-center" style="font-size: 10px">
+                {{program.tanggals[$index]}}
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+    </div>
+</div>
+<div class="modal fade" id="createnewData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: lightskyblue">
+                <h5 class="modal-title" id="createData">Saya Berwakaf</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible" ng-show="program.errorMsg == true" >
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ program.errorMsg }}
+                </div>
+                <div class="alert alert-success alert-dismissible" ng-show="program.successMsg == true" >
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ program.successMsg }}
+                </div>
+                <form ng-submit="program.transData(tranData);">
+                    <div class="form-group row">
+                        <label for="inputNominal" class="col-sm-2 col-form-label">Nominal</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputNominal" placeholder="Masukkan Nominal ..." ng-model="program.tranData.nominal">
+                        </div>
+                    </div>
+                    <button type="submit" id="btnSave" class="btn btn-primary">Kirim!</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
